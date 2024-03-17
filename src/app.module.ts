@@ -17,17 +17,18 @@ import { JoiValidationSchema } from './config/joi.validation';
       validationSchema: JoiValidationSchema
     }),
 
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
-    }),
-
     MongooseModule.forRoot(process.env.MONGODB),
 
     PokemonModule,
 
     CommonModule,
 
-    SeedModule
+    SeedModule,
+
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      serveRoot: '/static'
+    }),
   ],
 })
 export class AppModule { }
